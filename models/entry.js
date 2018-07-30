@@ -1,21 +1,27 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const EntrySchema = new Schema({
     title: {
         type: String,
-        required = true,
-        unique = true
+        required: true,
+        unique: true
     },
     content: {
         type: String
     },
-    notes: {
+    link: {
+        type: String,
+        required: true
+    },
+    notes: [
+        {
         type: Schema.Types.ObjectId,
-        ref= "Note"
-    }
+        ref: "Notes"
+        }
+    ]
 });
 
 const Entry = mongoose.model("Entry", EntrySchema);
 
-module.exports = Entry;
+export default Entry;
