@@ -4,7 +4,11 @@
   "description": "A web-scraper which uses MongoDB for data storage",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rm -rf build && mkdir build",
+    "build-babel": "babel -d ./build ./src -s",
+    "build": "npm run clean && npm run build-babel",
+    "start": "npm run build && node ./build/index.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +30,7 @@
     "body-parser": "^1.18.3",
     "cheerio": "^1.0.0-rc.2",
     "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
     "mongoose": "^5.2.5",
     "pug": "^2.0.3",
     "request": "^2.87.0"

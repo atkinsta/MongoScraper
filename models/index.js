@@ -1,5 +1,5 @@
 import note from "./note";
-import entry from "./entry";
+import entry from "./article";
 
 export const db = {
     Note: note,

@@ -1,8 +1,9 @@
 import express from "express";
 import bodyParser from "body-parser";
-import htmlRoutes from "./routes/htmlroutes.js"
-import backendRoutes from "./routes/backendroutes.js"
+import htmlRoutes from "./routes/htmlroutes.js";
+import backendRoutes from "./routes/backendroutes.js";
 import mongoose from "mongoose";
+import exphbs from "express-handlebars";
 
 const app = express();
 const PORT = 4040;
@@ -15,8 +16,13 @@ mongoose.connection.on("error", err => {
 });
 
 // Setting up Pug
-app.set("views", "./views");
-app.set("view engine", "pug");
+app.engine(
+    "handlebars",
+    exphbs({
+        defaultLayout: "main"
+    })
+);
+app.set("view engine", "handlebars");
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));

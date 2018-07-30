@@ -7,7 +7,7 @@ const ArticleSchema = new Schema({
         required: true,
         unique: true
     },
-    content: {
+    context: {
         type: String
     },
     link: {
@@ -22,6 +22,6 @@ const ArticleSchema = new Schema({
     ]
 });
 
-const Article = mongoose.model("Entry", ArticleSchema);
+const Article = mongoose.model("Article", ArticleSchema);
 
 export default Article;
