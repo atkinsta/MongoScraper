@@ -32,10 +32,8 @@ app.use(express.static("public"));
 app.use(htmlRoutes);
 app.use(backendRoutes);
 
-
 app.listen(PORT, () => {
     console.log("Listening on port");
 });
 
-//git add Hello
 
