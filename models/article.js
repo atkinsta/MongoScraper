@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
-const EntrySchema = new Schema({
+const ArticleSchema = new Schema({
     title: {
         type: String,
         required: true,
@@ -22,6 +22,6 @@ const EntrySchema = new Schema({
     ]
 });
 
-const Entry = mongoose.model("Entry", EntrySchema);
+const Article = mongoose.model("Entry", ArticleSchema);
 
-export default Entry;
+export default Article;

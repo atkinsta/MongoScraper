@@ -1,13 +1,17 @@
 import mongoose from "mongoose";
 import express from "express";
-import db from "../models/index.js";
+import Article from "../models/article";
+import Note from "../models/note";
+import cheerio from "cheerio";
+import request from "request";
 
 const backendRoutes = express.Router();
 const br = backendRoutes;
 
 // Functions to be used to render our pug files
 export const renderAll = (req, res) => {
-    db.Entry.findAll({}, data => {
+    Article.find({}, data => {
+        console.log(data);
         res.render("index", {test: data});
     });
 }
@@ -27,5 +31,13 @@ br.post("/api/create", (req, res) => {
         res.json(data);
     });
 });
+
+br.delete("/api/delete/:id", (req, res) => {
+    db.Note.destroy()
+});
+
+br.get("/api/scrape", (req, res) => {
+
+})
 
 export default backendRoutes;
