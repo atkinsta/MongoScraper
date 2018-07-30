@@ -4,7 +4,7 @@
   "description": "A web-scraper which uses MongoDB for data storage",
   "main": "server.js",
   "scripts": {
-    "start": "./node_modules/.bin/babel-cli/bin/babel-node server.js"
+    "start": "./node_modules/.bin/babel-cli/lib/babel-node server.js"
   },
   "repository": {
     "type": "git",
