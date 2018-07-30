@@ -25,7 +25,6 @@
   },
   "homepage": "https://github.com/atkinsta/MongoScraper#readme",
   "dependencies": {
-    "babel-cli": "^6.26.0",
     "body-parser": "^1.18.3",
     "cheerio": "^1.0.0-rc.2",
     "express": "^4.16.3",
@@ -36,7 +35,6 @@
   },
   "devDependencies": {
     "babel-preset-env": "^1.7.0",
-    "babel": "6.23.0",
     "babel-cli": "6.26.0"
   }
 }
