@@ -5,8 +5,10 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-postbuild": "npm install",
-    "start": "babel-node server.js"
+    "clean": "rm -rf build && mkdir build",
+    "build-babel": "babel -d ./build ./src -s",
+    "build": "npm run clean && npm run build-babel",
+    "start": "npm run build && node ./build/server.js"
   },
   "repository": {
     "type": "git",
@@ -34,7 +36,7 @@
     "request": "^2.87.0"
   },
   "devDependencies": {
-    "babel-preset-env": "^1.7.0",
-    "babel-cli": "6.26.0"
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0"
   }
 }
