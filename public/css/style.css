@@ -12,7 +12,32 @@ body {
 }
 
 .headline {
+    color: darkslategray;
     font-size: 1.8em;
+    font-weight: bold;
+}
+
+.context {
+    font-size: 1.3em;
+    color: rgb(47, 79, 79, .75)
+}
+
+.header {
+    color: darkslategray;
+}
+
+.subheader {
+    color: rgb(47, 79, 79, .6);
+}
+
+.commentInput {
+    margin-left: 10%; 
+    width: 75%;
+}
+
+.submitComent {
+    display: inline-block;
+    width: 12%
 }
 
 .deleteComment {

@@ -15,7 +15,7 @@ mongoose.connection.on("error", err => {
     console.log(`Mongoose connection err:\n${err}`);
 });
 
-// Setting up Pug
+// Setting up Handlebars
 app.engine(
     "handlebars",
     exphbs({
@@ -33,7 +33,7 @@ app.use(htmlRoutes);
 app.use(backendRoutes);
 
 app.listen(PORT, () => {
-    console.log("Listening on port");
+    console.log(`Listening on port: ${PORT}`);
 });
 
 

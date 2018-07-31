@@ -1,18 +1,19 @@
 <div class="container">
     <div class="header">
         <div class="jumbotron">
-            <h1>MongoDB Web-Scraper! With Cheerio and Node</h1>
+            <h1 class="header">MongoDB Web-Scraper!</h1>
+            <h3 class="subheader">With Cheerio and Node</h3>   
         </div>
     </div>
     <div class="col-md-12">
         {{#each articles}}
             <div class="article-holder">
-                <a class="headline" href="{{this.link}}" target="_blank">{{this.title}}</a>
-                <p>{{this.context}}</p>
+                <a class="headline" href="{{this.link}}" target="_blank">{{this.title}}</a> <br>
+                <p class="context">{{this.context}}</p>
                 <br>
                 <div class="comment-holder-{{this._id}}">
                     <hr>
-                    <input type="text" id="comment-{{this._id}}" placeholder="Comment on this article..."> <button class="submitComment" data-id={{this._id}}>Submit</button> <br>
+                    <button class="btn pull-left submitComment" data-id={{this._id}}>Submit</button><input type="text" class="form-control align-right commentInput" id="comment-{{this._id}}" placeholder="Comment on this article..."><br>
                     {{#each this.notes}}
                         <span data-id={{this._id}} class="badge badge-secondary deleteComment">Delete</span><span class="comment">      {{this.content}}</span><br>    
                     {{/each}}
