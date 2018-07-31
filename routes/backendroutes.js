@@ -21,7 +21,7 @@ export const renderAll = (req, res) => {
 }
 
 export const renderTopic = (req, res, topic) => {
-    res.send("oiiii " + topic);
+    //render topics pages here
 
 }
 
@@ -51,7 +51,7 @@ const scrapeData = (callback) => {
     });
 }
 
-const loadArticles = (callback) => {
+const loadArticles = () => {
     Article.find({}).populate("notes", (err, data) => {
         if (err)
             throw err;
@@ -75,7 +75,11 @@ br.delete("/api/delete/:id", (req, res) => {
     });
 });
 
-br.get("/api/scrape", scrapeData, loadArticles);
+br.get("/api/scrape", (req, res) => {
+    scrapeData(() => {
+        res.redirect("/");
+    })
+});
 
 br.get("/api/articles", (req, res) => {
     Article.find({}).populate("notes").exec((err, data) => {
@@ -83,6 +87,6 @@ br.get("/api/articles", (req, res) => {
             throw err;
         res.json(data);
     });
-})
+});
 
 export default backendRoutes;
