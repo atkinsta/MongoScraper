@@ -7,12 +7,16 @@
     <div class="col-md-12">
         {{#each articles}}
             <div class="article-holder">
-                <a href="{{this.link}}" target="_blank"><h4 class="headline">{{this.title}}</h4></a>
+                <a class="headline" href="{{this.link}}" target="_blank">{{this.title}}</a>
                 <p>{{this.context}}</p>
                 <br>
-                <div class="comment-holder">
-                    <input type="text" placeholder="Comment on this article..."> <button class="submit-comment" id={{this._id}}>Submit</button>
-                    <p>{{this.notes.text}}</p>
+                <div class="comment-holder-{{this._id}}">
+                    <hr>
+                    <input type="text" id="comment-{{this._id}}" placeholder="Comment on this article..."> <button class="submitComment" data-id={{this._id}}>Submit</button> <br>
+                    {{#each this.notes}}
+                        <span data-id={{this._id}} class="badge badge-secondary deleteComment">Delete</span><span class="comment">      {{this.content}}</span><br>    
+                    {{/each}}
+                    <hr>
                 </div>
             </div>
         {{/each}}

@@ -10,7 +10,7 @@ const br = backendRoutes;
 
 // Functions to be used to render our pug files
 export const renderAll = (req, res) => {
-    Article.find({}).populate("notes", (err, data) => {
+    Article.find({}).populate("notes").exec((err, data) => {
         if (data.length)
             res.render("index", {articles: data});
         else
@@ -55,23 +55,34 @@ const loadArticles = (callback) => {
     Article.find({}).populate("notes", (err, data) => {
         if (err)
             throw err;
-        callback(data);
+        return data;
     });
 }
 
 // Routes used in backend for various calls
 br.post("/api/note/:id", (req, res) => {
-    db.Note.create(req.body).then(newNote => 
-        db.Article.findOneAndUpdate({ _id: req.params.id }, { note: newNote._id }, { new: true })
+    console.log(req.params.id);
+    Note.create(req.body).then(newNote => 
+        Article.findOneAndUpdate({ _id: req.params.id }, {$push: {notes: newNote._id}}, { new: true })
     ).then(updatedArticle => {
         res.json(updatedArticle);
     });
 });
 
 br.delete("/api/delete/:id", (req, res) => {
-    db.Note.destroy()
+    Note.findByIdAndRemove(req.params.id).then(data => {
+        res.json(data)
+    });
 });
 
 br.get("/api/scrape", scrapeData, loadArticles);
+
+br.get("/api/articles", (req, res) => {
+    Article.find({}).populate("notes").exec((err, data) => {
+        if (err)
+            throw err;
+        res.json(data);
+    });
+})
 
 export default backendRoutes;
