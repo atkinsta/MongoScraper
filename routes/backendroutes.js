@@ -10,7 +10,7 @@ const br = backendRoutes;
 
 // Functions to be used to render our pug files
 export const renderAll = (req, res) => {
-    Article.find({}, (err, data) => {
+    Article.find({}).populate("notes", (err, data) => {
         if (data.length)
             res.render("index", {articles: data});
         else
@@ -52,7 +52,7 @@ const scrapeData = (callback) => {
 }
 
 const loadArticles = (callback) => {
-    Article.find({}, (err, data) => {
+    Article.find({}).populate("notes", (err, data) => {
         if (err)
             throw err;
         callback(data);
@@ -60,13 +60,11 @@ const loadArticles = (callback) => {
 }
 
 // Routes used in backend for various calls
-br.get("/backend/test", (req, res) => {
-    res.send("Backend stuff");
-});
-
-br.post("/api/create", (req, res) => {
-    db.Note.insert(req.body, (data) => {
-        res.json(data);
+br.post("/api/note/:id", (req, res) => {
+    db.Note.create(req.body).then(newNote => 
+        db.Article.findOneAndUpdate({ _id: req.params.id }, { note: newNote._id }, { new: true })
+    ).then(updatedArticle => {
+        res.json(updatedArticle);
     });
 });
 
