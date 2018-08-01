@@ -6,7 +6,7 @@ import mongoose from "mongoose";
 import exphbs from "express-handlebars";
 
 const app = express();
-const PORT = 4040;
+const PORT = process.env.PORT || 4040;
 
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/scraperDb";
 mongoose.Promise = Promise;
