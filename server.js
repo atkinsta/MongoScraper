@@ -1,7 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
-import htmlRoutes from "./routes/htmlroutes.js";
-import backendRoutes from "./routes/backendroutes.js";
+import htmlRoutes from "../routes/htmlroutes.js";
+import backendRoutes from "../routes/backendroutes.js";
 import mongoose from "mongoose";
 import exphbs from "express-handlebars";
 
