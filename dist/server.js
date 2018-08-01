@@ -8,11 +8,11 @@ var _bodyParser = require("body-parser");
 
 var _bodyParser2 = _interopRequireDefault(_bodyParser);
 
-var _htmlroutes = require("./routes/htmlroutes.js");
+var _htmlroutes = require("../routes/htmlroutes.js");
 
 var _htmlroutes2 = _interopRequireDefault(_htmlroutes);
 
-var _backendroutes = require("./routes/backendroutes.js");
+var _backendroutes = require("../routes/backendroutes.js");
 
 var _backendroutes2 = _interopRequireDefault(_backendroutes);
 
